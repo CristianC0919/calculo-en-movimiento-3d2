@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cálculo en Movimiento 3D</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>CÁLCULO EN MOVIMIENTO <span>3D</span></h1>
+    <p>Gráfica, derivadas y partículas controladas por gestos</p>
+  </div>
+  <div class="status"><span id="cameraStatus" class="dot off"></span><span id="statusText">Cámara desactivada</span></div>
+</header>
+
+<main>
+<section class="viewer">
+  <canvas id="scene"></canvas>
+  <div class="overlay top-left">
+    <strong id="gestureTitle">Sin interacción</strong>
+    <span id="gestureAction">Escribe una función y activa la cámara o usa 1–5.</span>
+  </div>
+  <div class="overlay equation">
+    <span id="functionText">f(x) = x²</span>
+    <span id="derivativesText">f'(x) = 2x · f''(x) = 2</span>
+    <span id="mathResult">Esperando una interacción…</span>
+  </div>
+  <div class="legend">
+    <div><i class="line f"></i> f(x)</div>
+    <div><i class="line d1"></i> f'(x)</div>
+    <div><i class="line d2"></i> f''(x)</div>
+    <div><i class="point"></i> punto</div>
+  </div>
+  <div id="challenge" class="challenge hidden">
+    <b>RETO DE RAZÓN DE CAMBIO</b>
+    <p id="challengeText">Se calculará usando la función ingresada.</p>
+    <div id="challengeAnswer"></div>
+  </div>
+</section>
+
+<aside>
+  <div class="panel function-panel">
+    <h2>Función matemática</h2>
+    <input id="functionInput" value="x^2" aria-label="Función matemática">
+    <div class="examples">
+      <button data-fn="x^2">x²</button>
+      <button data-fn="x^3-2*x">x³−2x</button>
+      <button data-fn="sin(x)">sen(x)</button>
+      <button data-fn="exp(x/2)">eˣᐟ²</button>
+    </div>
+    <label>Rango de gráfica: <span id="rangeValue">−5 a 5</span></label>
+    <input id="rangeInput" type="range" min="2" max="10" step="1" value="5">
+    <button id="applyBtn" class="primary">Aplicar función</button>
+    <div id="functionError" class="error"></div>
+  </div>
+
+  <button id="cameraBtn" class="primary">📷 Activar cámara</button>
+  <button id="resetBtn">↻ Reiniciar</button>
+
+  <div class="panel">
+    <h2>Interacciones</h2>
+    <div class="gesture"><b>☝ 1 dedo</b><span>Mover x = a y evaluar f(a)</span></div>
+    <div class="gesture"><b>✌ 2 dedos</b><span>Construir la recta tangente</span></div>
+    <div class="gesture"><b>🤟 3 dedos</b><span>Mostrar f, f' y f''</span></div>
+    <div class="gesture"><b>🖖 4 dedos</b><span>Máximos, mínimos y puntos críticos</span></div>
+    <div class="gesture"><b>🖐 5 dedos</b><span>Reto de razón de cambio</span></div>
+  </div>
+
+  <div class="panel camera-panel">
+    <h2>Cámara</h2>
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="handCanvas"></canvas>
+    <small>La cámara se usa para reconocer el número de dedos.</small>
+  </div>
+
+  <div class="panel">
+    <h2>Control alternativo</h2>
+    <p><b>1–5</b>: interacción · <b>← →</b>: mover x · <b>R</b>: reiniciar.</p>
+  </div>
+</aside>
+</main>
+
+<footer><span>Proyecto de aula · Cálculo Diferencial</span><span>Three.js · Math.js · MediaPipe</span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@13.0.1/lib/browser/math.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
