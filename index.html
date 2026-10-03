@@ -1,0 +1,14 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cálculo en Movimiento</title><link rel="stylesheet" href="style.css"></head><body>
+<header><b>CÁLCULO EN MOVIMIENTO</b><button id="reset">↻ Reiniciar</button></header>
+<main><section class="hero"><p>PROYECTO DE AULA · CÁLCULO DIFERENCIAL</p><h1>La función se convierte en una experiencia interactiva.</h1><span id="status">Listo</span></section>
+<section class="cols"><article class="card"><h2>Cámara y gestos</h2><div class="camera"><video id="video" autoplay playsinline muted></video><canvas id="overlay"></canvas><div id="camMsg">Pulsa “Activar cámara” y acepta el permiso.</div></div><button id="cameraBtn">📷 Activar cámara</button><p id="gesture">0 dedos</p></article>
+<article class="card"><h2>Función</h2><div class="row"><input id="fn" value="x^3 - 3*x"><button id="apply">Aplicar</button></div><div id="error" class="error"></div><p>f(x): <b id="fx">—</b></p><p>f′(x): <b id="d1">—</b></p><p>f″(x): <b id="d2">—</b></p><label>a = <b id="av">1.00</b></label><input id="ar" type="range" min="-5" max="5" step=".05" value="1"></article></section>
+<section class="card"><h2 id="mode">Espera un gesto</h2><div id="graph"></div><div id="result">Levanta de 1 a 5 dedos.</div></section>
+<section class="gestures"><div>☝️ <b>1</b><small>Evaluación y pendiente</small></div><div>✌️ <b>2</b><small>Secante y Δf/Δx</small></div><div>🤟 <b>3</b><small>f, f′ y f″</small></div><div>🖖 <b>4</b><small>Máximos y mínimos</small></div><div>🖐️ <b>5</b><small>Reto aplicado</small></div></section>
+<section class="card"><h2>¿Cómo funciona?</h2><p><b>HTML</b> crea la interfaz. <b>CSS</b> organiza el diseño. <b>JavaScript</b> coordina cámara, gestos y resultados. <b>Math.js</b> interpreta funciones y derivadas. <b>Three.js</b> dibuja la gráfica. <b>MediaPipe Hands</b> detecta la mano.</p><pre>1 dedo  → f(a) y pendiente
+2 dedos → secante y cociente incremental
+3 dedos → f(x), f′(x), f″(x)
+4 dedos → críticos, máximos y mínimos
+5 dedos → razón de cambio</pre></section>
+<section class="card"><h2>Manual rápido</h2><ol><li>Abre la app mediante HTTPS/GitHub Pages.</li><li>Escribe una función y pulsa Aplicar.</li><li>Activa la cámara y acepta el permiso.</li><li>Usa 1–5 dedos para las interacciones.</li><li>Si falla la cámara, usa 1–5 con teclado, ← → para mover a y [ ] para cambiar h.</li></ol></section></main>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.2/lib/browser/math.js"></script><script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script><script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script><script src="app.js"></script></body></html>
